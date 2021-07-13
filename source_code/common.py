@@ -10,8 +10,8 @@ import torch.optim as optim
 from torch.utils.data import TensorDataset, DataLoader
 
 # change Matlab aesthetics
-mpl.rc('xtick', labelsize=8)
-mpl.rc('ytick', labelsize=8)
+mpl.rc('xtick', labelsize=15)
+mpl.rc('ytick', labelsize=15)
 mpl.rc('text', usetex=False)
 
 # A list of colors and markers that we will iterate through
@@ -23,19 +23,19 @@ def log10(x):
     return np.log(x) / np.log(10)
 
 def plot_figure(xtitle, ytitle, x, y, xticks, save_path, ylabels=None, x_transform=log10):
-    fig = plt.figure(figsize=(10, 10))
+    fig = plt.figure(figsize=(10, 8))
     ax = plt.subplot(111)
-    ax.set_xlabel(xtitle,fontsize=12)
+    ax.set_xlabel(xtitle,fontsize=15)
     ax.set_xticks(log10(x))
     ax.set_xticklabels(xticks)
-    ax.set_ylabel(f"log({ytitle})", fontsize=12)
+    ax.set_ylabel(f"log({ytitle})", fontsize=15)
         
     if ylabels is not None:
         for t in range(len(ylabels)):
             color = next(colors)
             marker = next(markers)
             ax.plot(x_transform(x), log10(y[t]), markersize=4, linestyle="-", marker=marker, color=color,label=ylabels[t], linewidth=1)
-        ax.legend(fontsize=10)
+        ax.legend(fontsize=12)
     else:
         color = next(colors)
         marker = next(markers)
